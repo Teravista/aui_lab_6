@@ -1,0 +1,44 @@
+<article *ngIf="meatProduct">
+  <header><h2>Add Product</h2></header>
+
+  <form class="container"  #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-4 p-2">
+        <div>
+          <label for="name">Name:</label>
+          <input id="name" name="name" [(ngModel)]="meatProduct.name"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 p-2">
+        <div>
+          <label for="intensity">intensity:</label>
+          <input id="intensity" name="intensity" [(ngModel)]="meatProduct.intensity"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 p-2">
+        <fieldset *ngIf="meatTypes">
+          <legend>meatType:</legend>
+          <div *ngFor="let meatType of meatTypes.meatTypes">
+            <label>
+              <input type="radio" name="meatType" [(ngModel)]="meatProduct.meatType" [value]="meatType.id"/>
+              {{meatType.name}}
+            </label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2 p-2">
+        <button type="submit">Create</button>
+      </div>
+
+    </div>
+  </form>
+</article>

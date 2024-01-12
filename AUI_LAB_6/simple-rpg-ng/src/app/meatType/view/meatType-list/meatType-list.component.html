@@ -1,0 +1,33 @@
+<article class="text--justified">
+  <header   ><h2 class="p3">Meat Types</h2></header>
+
+  <table *ngIf="meatTypes">
+    <thead>
+    <tr>
+
+      <th>Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let meatType of meatTypes.meatTypes">
+
+      <td>{{meatType.name}}</td>
+      <td>
+        <a [routerLink]="['/meatTypes', meatType.id]">View</a>
+      </td>
+      <td>
+        <a [routerLink]="['/meatTypes', meatType.id, 'edit']">Edit</a>
+      </td>
+      <td>
+        <button (click)="onDelete(meatType)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+    <b [routerLink]="'/meatTypeADD'">add Type</b>
+
+</article>

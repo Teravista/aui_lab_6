@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  meat-product:
+    image: meat_product:1.0.0
+    restart: always
+
+  meat-type:
+    image: meat_type:1.0.0
+    restart: always
+    environment:
+      RPG_CHARACTER_URL: "http://meat-product:8080"
+
+
+
+  gateway:
+    image: gateway:1.0.0
+    restart: always
+    environment:
+      RPG_CHARACTER_URL: "http://meat-product:8080"
+      RPG_PROFESSION_URL: "http://meat-type:8080"
+      RPG_GATEWAY_HOST: "gateway:8080"
+
+
+
+  angularyzacja:
+    image: angularyzacja:1.0.0S
+    restart: always
+    environment:
+      API_URL: http://gateway:8080/api
+    ports:
+      - "8087:80"
