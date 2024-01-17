@@ -1,0 +1,5 @@
+FROM  teravista/be_188555
+
+
+COPY ./parameters.php /var/www/html/app/config/parameters.php
+
